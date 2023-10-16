@@ -1,0 +1,10 @@
+﻿global using ConsoleTask.IServices;
+global using Furion;
+global using Furion.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Configuration;
+global using SqlSugar;
+global using ConsoleTask.Model;
+global using Furion.RemoteRequest.Extensions;
+global using Microsoft.Extensions.Logging; 
+global using System.ComponentModel;
