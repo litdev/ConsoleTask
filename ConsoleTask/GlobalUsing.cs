@@ -1,5 +1,4 @@
-﻿global using ConsoleTask.IServices;
-global using Furion;
+﻿global using Furion;
 global using Furion.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;

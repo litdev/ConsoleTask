@@ -1,4 +1,5 @@
 ﻿using ConsoleTask;
+using ConsoleTask.Services;
 
 Serve.RunNative(services =>
 {
@@ -10,17 +11,11 @@ Serve.RunNative(services =>
         };
     });
     services.AddVirtualFileServer();
-    services.AddRemoteRequest(options =>
-    {
-        options.AddHttpClient("default", c =>
-        {
-            c.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.60");
-        });
-    });
+    services.AddRemoteRequest();
     services.AddSqlsugarSetup(App.Configuration);
 }, includeWeb: false, args: args);
 
-var launch = App.GetRequiredService<ILaunchSpider>();
+var launch = App.GetRequiredService<LaunchSpider>();
 launch.Start(args);
 Console.WriteLine("主线程运行完毕");
 Console.ReadKey();

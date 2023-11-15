@@ -1,18 +1,25 @@
 ﻿namespace ConsoleTask.Services;
 
-public class LaunchSpider : ILaunchSpider, ITransient
+public class LaunchSpider : ITransient
 {
     private readonly ILogger _logger;
 
     private readonly DemoService _demoService;
     private readonly Demo2Service _demo2Service;
     private readonly Demo3Service _demo3Service;
-    public LaunchSpider(ILogger<LaunchSpider> logger, DemoService demoService, Demo2Service demo2Service, Demo3Service demo3Service)
+    private readonly IConfiguration _config;
+
+    public LaunchSpider(ILogger<LaunchSpider> logger,
+        DemoService demoService,
+        Demo2Service demo2Service,
+        Demo3Service demo3Service,
+        IConfiguration config)
     {
         _logger = logger;
         _demoService = demoService;
         _demo2Service = demo2Service;
         _demo3Service = demo3Service;
+        _config = config;
     }
 
     public async Task Start(string[] args)
@@ -41,7 +48,6 @@ public class LaunchSpider : ILaunchSpider, ITransient
         }
 
         _logger.LogInformation("所有服务启动完成");
-
 
         if (App.Configuration.Get<bool>("AutoExit")) Environment.Exit(0);
     }
