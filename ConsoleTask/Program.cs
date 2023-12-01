@@ -18,4 +18,4 @@ Serve.RunNative(services =>
 var launch = App.GetRequiredService<LaunchSpider>();
 launch.Start(args);
 Console.WriteLine("主线程运行完毕");
-Console.ReadKey();
+// Console.ReadKey();
